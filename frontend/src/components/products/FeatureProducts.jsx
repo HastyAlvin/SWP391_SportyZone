@@ -1,57 +1,58 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
-import { FaEye, FaRegHeart } from "react-icons/fa";
-import { RiShoppingCartLine } from "react-icons/ri";
-import Rating from '../Rating';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
-import { add_to_card,add_to_wishlist,messageClear } from '../../store/reducers/cardReducer';
-import toast from 'react-hot-toast';
+// // import { useEffect } from 'react';
+// import { FaEye, FaRegHeart } from "react-icons/fa";
+// import { RiShoppingCartLine } from "react-icons/ri";
+// import Rating from '../Rating';
+// import { Link, useNavigate } from 'react-router-dom';
+// import { useDispatch,useSelector } from 'react-redux';
+// import { add_to_card,add_to_wishlist,messageClear } from '../../store/reducers/cardReducer';
+// import toast from 'react-hot-toast';
 
 const FeatureProducts = ({products}) => {
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const {userInfo } = useSelector(state => state.auth)
-    const {errorMessage,successMessage } = useSelector(state => state.card)
+    // const navigate = useNavigate()
+    // const dispatch = useDispatch()
+    // const {userInfo } = useSelector(state => state.auth)
+    // const {errorMessage,successMessage } = useSelector(state => state.card)
 
-    const add_card = (id) => {
-        if (userInfo) {
-           dispatch(add_to_card({
-            userId: userInfo.id,
-            quantity : 1,
-            productId : id
-           }))
-        } else {
-            navigate('/login')
-        }
-    }
+    // const add_card = (id) => {
+    //     if (userInfo) {
+    //        dispatch(add_to_card({
+    //         userId: userInfo.id,
+    //         quantity : 1,
+    //         productId : id
+    //        }))
+    //     } else {
+    //         navigate('/login')
+    //     }
+    // }
 
-    useEffect(() => { 
-        if (successMessage) {
-            toast.success(successMessage)
-            dispatch(messageClear())  
-        } 
-        if (errorMessage) {
-            toast.error(errorMessage)
-            dispatch(messageClear())  
-        } 
+    // useEffect(() => { 
+    //     if (successMessage) {
+    //         toast.success(successMessage)
+    //         dispatch(messageClear())  
+    //     } 
+    //     if (errorMessage) {
+    //         toast.error(errorMessage)
+    //         dispatch(messageClear())  
+    //     } 
         
-    },[successMessage,errorMessage])
+    // },[successMessage,errorMessage])
 
 
-    const add_wishlist = (pro) => {
-        dispatch(add_to_wishlist({
-            userId: userInfo.id,
-            productId: pro._id,
-            name: pro.name,
-            price: pro.price,
-            image: pro.images[0],
-            discount: pro.discount,
-            rating: pro.rating,
-            slug: pro.slug
-        }))
-    }
+    // const add_wishlist = (pro) => {
+    //     dispatch(add_to_wishlist({
+    //         userId: userInfo.id,
+    //         productId: pro._id,
+    //         name: pro.name,
+    //         price: pro.price,
+    //         image: pro.images[0],
+    //         discount: pro.discount,
+    //         rating: pro.rating,
+    //         slug: pro.slug
+    //     }))
+    // }
 
 
     return ( 
@@ -64,14 +65,9 @@ const FeatureProducts = ({products}) => {
             </div>
 
         <div className='w-full grid grid-cols-4 md-lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6'>
-    {
+    {/* {
         products.map((p,i) => <div key={i} className='border group transition-all duration-500 hover:shadow-md hover:-mt-3'>
             <div className='relative overflow-hidden'>
-            
-        {
-            p.discount ? <div className='flex justify-center items-center absolute text-white w-[38px] h-[38px] rounded-full bg-red-500 font-semibold text-xs left-2 top-2'>{p.discount}% </div> : ''
-        }
-
         <img className='sm:w-full w-full h-[240px]' src={p.images[0]} alt="" />  
 
         <ul className='flex transition-all duration-700 -bottom-10 justify-center items-center gap-2 absolute w-full group-hover:bottom-3'>
@@ -103,7 +99,7 @@ const FeatureProducts = ({products}) => {
 
         </div>
         )
-    }
+    } */}
 
         </div>
 

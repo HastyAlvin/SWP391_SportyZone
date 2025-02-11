@@ -20,7 +20,7 @@ export const get_products = createAsyncThunk(
     'product/get_products',
     async(_, { fulfillWithValue }) => {
         try {
-            const {data} = await api.get('/home/get-products')
+            const {data} = await api.get('/products')
              console.log(data)
             return fulfillWithValue(data)
         } catch (error) {

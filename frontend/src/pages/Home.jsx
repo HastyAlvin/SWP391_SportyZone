@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
@@ -32,13 +33,13 @@ const Home = () => {
               <Products title="Latest Product" products={latest_product} />
             </div>
 
-            <div className="overflow-hidden">
+            {/* <div className="overflow-hidden">
               <Products title="Top Rated Product" products={topRated_product} />
-            </div>
+            </div> */}
 
-            <div className="overflow-hidden">
+            {/* <div className="overflow-hidden">
               <Products title="Discount Product" products={discount_product} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
