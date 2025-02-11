@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const httpErrors = require('http-errors');
+const cookieParser = require("cookie-parser");
 const cors = require('cors'); // Import CORS
 require('dotenv').config();
 
@@ -14,9 +15,11 @@ const productRoutes = require('./routers/productRouter.js');
 
 const app = express();
 
-app.use(cors()); // Sử dụng CORS
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 
 // API
 app.use('/api/users/', userRoutes); 

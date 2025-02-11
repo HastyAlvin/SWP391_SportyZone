@@ -7,14 +7,15 @@ export const get_category = createAsyncThunk(
     'product/get_category',
     async(_, { fulfillWithValue }) => {
         try {
-            const {data} = await api.get('/categories')
-            // console.log(data)
+            const {data} = await api.get('/')
+            console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.respone)
         }
     }
 )
+
 // End Method 
 export const get_products = createAsyncThunk(
     'product/get_products',
@@ -107,20 +108,6 @@ export const get_banners = createAsyncThunk(
     async( _ , { fulfillWithValue }) => {
         try {
             const {data} = await api.get(`/banners`)
-            //  console.log(data)
-            return fulfillWithValue(data)
-        } catch (error) {
-            console.log(error.respone)
-        }
-    }
-)
-// End Method 
-
-export const get_all_products = createAsyncThunk(
-    'product/get_all_products',
-    async( _ , { fulfillWithValue }) => {
-        try {
-            const {data} = await api.get(`/products`)
             //  console.log(data)
             return fulfillWithValue(data)
         } catch (error) {

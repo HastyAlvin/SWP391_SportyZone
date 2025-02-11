@@ -5,7 +5,6 @@ import Banner from "../components/Banner";
 import Categorys from "../components/Categorys";
 import FeatureProducts from "../components/products/FeatureProducts";
 import Products from "../components/products/Products";
-import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { get_products } from "../store/reducers/homeReducer";
 
@@ -23,7 +22,7 @@ const Home = () => {
       <Banner />
       <Categorys />
       <div className="py-[45px]">
-        <FeatureProducts products={products} />
+        {/* <FeatureProducts products={products} /> */}
       </div>
 
       <div className="py-10">
@@ -43,7 +42,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
