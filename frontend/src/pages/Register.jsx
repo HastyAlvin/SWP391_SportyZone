@@ -14,7 +14,7 @@ const Register = () => {
   );
 
   const [state, setState] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -66,15 +66,15 @@ const Register = () => {
               <div>
                 <form onSubmit={register} className="text-slate-600">
                   <div className="flex flex-col gap-1 mb-2">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="username">Username</label>
                     <input
                       onChange={inputHandle}
-                      value={state.name}
+                      value={state.username}
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-green-500 rounded-md"
                       type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Name"
+                      name="username"
+                      id="username"
+                      placeholder="username"
                       required
                     />
                   </div>
