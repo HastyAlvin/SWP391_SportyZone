@@ -16,11 +16,12 @@ import {
   get_card_products,
   get_wishlist_products,
 } from "../store/reducers/cardReducer";
+import axios from "axios";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { categorys } = useSelector((state) => state.home);
+  const [categoryList, setCategoryList] = useState([]);
   const { userInfo } = useSelector((state) => state.auth);
   const { card_product_count, wishlist_count } = useSelector(
     (state) => state.card
@@ -33,10 +34,16 @@ const Header = () => {
 
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
-
   const search = () => {
     navigate(`/products/search?category=${category}&&value=${searchValue}`);
   };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/categories")
+      .then((response) => setCategoryList(response.data))
+      .catch(() => console.log("Lỗi khi lấy dữ liệu"));
+  }, []);
 
   const redirect_card_page = () => {
     if (userInfo) {
@@ -155,6 +162,7 @@ const Header = () => {
                 <ul className="flex justify-start items-start gap-8 text-sm font-bold uppercase md-lg:hidden">
                   <li>
                     <Link
+                      to="/"
                       className={`p-2 block ${
                         pathname === "/" ? "text-[#059473]" : "text-slate-600"
                       } `}
@@ -310,6 +318,7 @@ const Header = () => {
                   className={`py-2 block ${
                     pathname === "/" ? "text-[#059473]" : "text-slate-600"
                   } `}
+                  to="/"
                 >
                   Home
                 </Link>
@@ -421,17 +430,17 @@ const Header = () => {
                 } overflow-hidden transition-all md-lg:relative duration-500 absolute z-[99999] bg-[#dbf3ed] w-full border-x`}
               >
                 <ul className="py-2 text-slate-600 font-medium">
-                  {categorys.map((c, i) => {
+                  {categoryList.map((c, i) => {
                     return (
                       <li
                         key={i}
                         className="flex justify-start items-center gap-2 px-[24px] py-[6px]"
                       >
-                        <img
+                        {/* <img
                           src={c.image}
                           className="w-[30px] h-[30px] rounded-full overflow-hidden"
                           alt=""
-                        />
+                        /> */}
                         <Link
                           to={`/products?category=${c.name}`}
                           className="text-sm block"
@@ -458,7 +467,7 @@ const Header = () => {
                       id=""
                     >
                       <option value="">Select Category</option>
-                      {categorys.map((c, i) => (
+                      {categoryList.map((c, i) => (
                         <option key={i} value={c.name}>
                           {" "}
                           {c.name}{" "}

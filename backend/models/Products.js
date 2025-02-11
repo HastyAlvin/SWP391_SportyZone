@@ -11,6 +11,10 @@ const productSchema = new Schema(
       type: String,
       required: [true, "Mô tả sản phẩm không được để trống"],
     },
+    image: {
+      type: String,
+      required: [true, "Hình ảnh sản phẩm không được để trống"],
+    },
     price: {
       type: Number,
       required: [true, "Giá sản phẩm không được để trống"],

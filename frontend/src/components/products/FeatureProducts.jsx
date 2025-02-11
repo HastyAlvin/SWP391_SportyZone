@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 import { FaEye, FaRegHeart } from "react-icons/fa";
 import { RiShoppingCartLine } from "react-icons/ri";
 import Rating from '../Rating';

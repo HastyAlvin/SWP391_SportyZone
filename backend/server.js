@@ -3,19 +3,26 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const httpErrors = require('http-errors');
+const cors = require('cors'); // Import CORS
 require('dotenv').config();
 
 // Gọi router
 const userRoutes = require('./routers/userRouter.js');
+const categoryRoutes = require('./routers/categoryRouter.js');
+const productRoutes = require('./routers/productRouter.js');
+
 
 const app = express();
 
+app.use(cors()); // Sử dụng CORS
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-
 // API
-app.use('/api', userRoutes); 
+app.use('/api/users/', userRoutes); 
+app.use('/api/categories/', categoryRoutes);
+app.use('/api/products/', productRoutes);
+
 
 app.get('/', async (req, res, next) => {
     res.status(200).json({ "message": "Welcome to RESTFul API Server" });
