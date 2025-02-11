@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../api/api";
 import { jwtDecode } from "jwt-decode";
@@ -6,7 +7,7 @@ export const customer_register = createAsyncThunk(
     'auth/customer_register',
     async(info, { rejectWithValue,fulfillWithValue }) => {
         try {
-            const {data} = await api.post('/customer/customer-register',info)
+            const {data} = await api.post('/users/register',info)
             localStorage.setItem('customerToken',data.token)
            // console.log(data)
             return fulfillWithValue(data)
@@ -21,7 +22,7 @@ export const customer_login = createAsyncThunk(
     'auth/customer_login',
     async(info, { rejectWithValue,fulfillWithValue }) => {
         try {
-            const {data} = await api.post('/customer/customer-login',info)
+            const {data} = await api.post('/users/login',info)
             localStorage.setItem('customerToken',data.token)
            // console.log(data) 
             return fulfillWithValue(data)
