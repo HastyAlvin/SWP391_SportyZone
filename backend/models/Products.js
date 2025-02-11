@@ -11,15 +11,19 @@ const productSchema = new Schema(
       type: String,
       required: [true, "Mô tả sản phẩm không được để trống"],
     },
+    images: {
+      type: String,
+      required: [true, "Hình ảnh sản phẩm không được để trống"],
+    },
     price: {
       type: Number,
       required: [true, "Giá sản phẩm không được để trống"],
-      max: [9, "giá bé hơn 1 tỷ"],
+      max: [999999999, "giá bé hơn 1 tỷ"],
     },
     quantity: {
       type: Number,
       required: [true, "Số lượng sản phẩm không được để trống"],
-      max: [9, "số lượng bé hơn 1 tỷ"],
+      max: [999999999, "số lượng bé hơn 1 tỷ"],
       default: 0,
     },
     category_id: {
